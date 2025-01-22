@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div class="container mt-5 py-5">
+            <h1 class="mb-4">File Uploaded Successfully!</h1>
+            <p><strong>Filename:</strong> {{ Filename }}</p>
+
+            <h2 class="mt-4">Preview of Data</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                        {{ Data|safe }}
+                </table>
+            </div>
+
+            
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="mt-4">Basic Data Information</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Measure</th>
+                                    {% for header in list_headers %}
+                                    <th scope="col">{{ header | capitalize}}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for colname, measures in basic_info_dic.items() %}
+                                <tr>
+                                    <th scope="row" class="text-capitalize">
+                                        {{ colname }}
+                                    </th>
+                                    {% for measure in measures %}
+                                    <td>{{ measures[measure] | round(3) }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

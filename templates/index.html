@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+            <div class="card shadow p-4" style="max-width: 500px; width: 100%">
+                <h2 class="text-center mb-4">Upload Your CSV</h2>
+                <form action="/upload" method="POST" enctype="multipart/form-data"> 
+                    <div class="mb-3">
+                        <label for="csvFile" class="form-label fw-bold">Select a CSV File</label>
+                        <input type="file" name="Filecsv" class="form-control" id="csvFile" accept=".csv" required/>
+                    </div>                
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+{% endblock %}
